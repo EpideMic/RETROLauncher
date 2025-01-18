@@ -1073,7 +1073,7 @@ function buscar_VMC() -- Busca y guarda VMC/Modos de PS2
 	local VMC_encontradas = {}
 	if buscar_VMC_USB ~= nil then
 		for contador = 1,#buscar_VMC_USB do
-			if buscar_VMC_USB[contador].directory == false and string.lower(strting.sub(buscar_VMC_USB[contador].name,-4)) == ".bin" then
+			if buscar_VMC_USB[contador].directory == false and string.lower(string.sub(buscar_VMC_USB[contador].name,-4)) == ".bin" then
 				table.insert(VMC_encontradas,"mass:/VMC/".. buscar_VMC_USB[contador].name)
 			end
 		end
