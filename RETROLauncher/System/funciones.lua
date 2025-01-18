@@ -306,14 +306,21 @@ function limpiar_art() -- Elimina las imágenes de memoria
 	end
 end
 
+function get_substring(text,start,ending)
+	if not text or string.len(text) == 0 then
+		return ""
+	end
+	return string.sub(text,start,ending)
+end
+
 function cargar_art() -- Cargar imágenes en memoria 
 	local actual = System.currentDirectory()
-	local nombre = string.sub(LISTAS.ROMS[LISTAS.INDICE],1,-CONTROL.EXTENSION)
+	local nombre = get_substring(LISTAS.ROMS[LISTAS.INDICE],1,-CONTROL.EXTENSION)
 	local nombre2 = "nada"
 	local nombre3 = "nada"
 	if CONTROL.ESTILO == 2 then
-		nombre2 = string.sub(LISTAS.ROMS[LISTAS.INDICE2],1,-CONTROL.EXTENSION)
-		nombre3 = string.sub(LISTAS.ROMS[LISTAS.INDICE3],1,-CONTROL.EXTENSION)
+		nombre2 = get_substring(LISTAS.ROMS[LISTAS.INDICE2],1,-CONTROL.EXTENSION)
+		nombre3 = get_substring(LISTAS.ROMS[LISTAS.INDICE3],1,-CONTROL.EXTENSION)
 	end
 	if LISTAS.IDENTIDAD == 1 and LISTAS.MOSTRAR == 1 then -- Generar nombre de Sega Megadrive
 		LISTAS.COVER_DIR = (actual .."/Multimedia/Covers/Covers Sega Megadrive/".. nombre ..".png")
@@ -367,20 +374,20 @@ function cargar_art() -- Cargar imágenes en memoria
 	elseif LISTAS.IDENTIDAD == 8 and LISTAS.MOSTRAR == 1 then -- Generar nombre de Play Station
 		LISTAS.COVER_DIR = (actual .."/Multimedia/Covers/Covers PlayStation/".. nombre ..".png")
 		if doesFileExist(LISTAS.COVER_DIR) == false then
-			LISTAS.COVER_DIR = ("mass:/ART/".. string.sub(nombre,1,11) .."_COV.png")
+			LISTAS.COVER_DIR = ("mass:/ART/".. get_substring(nombre,1,11) .."_COV.png")
 		end
 		LISTAS.SCREENSHOT_DIR = (actual .."/Multimedia/Screenshots/Screenshots PlayStation/".. nombre ..".png")
 		if doesFileExist(LISTAS.SCREENSHOT_DIR) == false then
-			LISTAS.SCREENSHOT_DIR = ("mass:/ART/".. string.sub(nombre,1,11) .."_SCR.png")
+			LISTAS.SCREENSHOT_DIR = ("mass:/ART/".. get_substring(nombre,1,11) .."_SCR.png")
 		end
 		if CONTROL.ESTILO == 2 then
 			LISTAS.COVER_DIR2 = (actual .."/Multimedia/Covers/Covers PlayStation/".. nombre2 ..".png")
 			if doesFileExist(LISTAS.COVER_DIR2) == false then
-				LISTAS.COVER_DIR2 = ("mass:/ART/".. string.sub(nombre2,1,11) .."_COV.png")
+				LISTAS.COVER_DIR2 = ("mass:/ART/".. get_substring(nombre2,1,11) .."_COV.png")
 			end
 			LISTAS.COVER_DIR3 = (actual .."/Multimedia/Covers/Covers PlayStation/".. nombre3 ..".png")
 			if doesFileExist(LISTAS.COVER_DIR3) == false then
-				LISTAS.COVER_DIR3 = ("mass:/ART/".. string.sub(nombre3,1,11) .."_COV.png")
+				LISTAS.COVER_DIR3 = ("mass:/ART/".. get_substring(nombre3,1,11) .."_COV.png")
 			end
 		end
 	elseif LISTAS.IDENTIDAD == 9 and LISTAS.MOSTRAR == 1 then -- Generar nombre de Atari 2600
@@ -413,10 +420,10 @@ function cargar_art() -- Cargar imágenes en memoria
 		end
 	elseif LISTAS.IDENTIDAD == 13 and LISTAS.MOSTRAR == 1 then -- Generar nombre de APPS
 		if OPCIONES.APPS_MENU_FULL_PATH == 1 then
-			nombre = salida_texto_dir(string.sub(LISTAS.ROMS[LISTAS.INDICE],1,-CONTROL.EXTENSION),true)
+			nombre = salida_texto_dir(get_substring(LISTAS.ROMS[LISTAS.INDICE],1,-CONTROL.EXTENSION),true)
 			if CONTROL.ESTILO == 2 then 
-				nombre2 = salida_texto_dir(string.sub(LISTAS.ROMS[LISTAS.INDICE2],1,-CONTROL.EXTENSION),true)
-				nombre3 = salida_texto_dir(string.sub(LISTAS.ROMS[LISTAS.INDICE3],1,-CONTROL.EXTENSION),true)
+				nombre2 = salida_texto_dir(get_substring(LISTAS.ROMS[LISTAS.INDICE2],1,-CONTROL.EXTENSION),true)
+				nombre3 = salida_texto_dir(get_substring(LISTAS.ROMS[LISTAS.INDICE3],1,-CONTROL.EXTENSION),true)
 			end
 		end
 		LISTAS.COVER_DIR = (actual .."/Multimedia/Covers/Covers APPS/".. nombre ..".png")
@@ -452,20 +459,20 @@ function cargar_art() -- Cargar imágenes en memoria
 	elseif LISTAS.IDENTIDAD == 14 and LISTAS.MOSTRAR == 1 then -- Generar nombre de Play Station 2
 		LISTAS.COVER_DIR = (actual .."/Multimedia/Covers/Covers PlayStation 2/".. nombre ..".png")
 		if doesFileExist(LISTAS.COVER_DIR) == false then
-			LISTAS.COVER_DIR = ("mass:/ART/".. string.sub(nombre,1,11) .."_COV.png")
+			LISTAS.COVER_DIR = ("mass:/ART/".. get_substring(nombre,1,11) .."_COV.png")
 		end
 		LISTAS.SCREENSHOT_DIR = (actual .."/Multimedia/Screenshots/Screenshots PlayStation 2/".. nombre ..".png")
 		if doesFileExist(LISTAS.SCREENSHOT_DIR) == false then
-			LISTAS.SCREENSHOT_DIR = ("mass:/ART/".. string.sub(nombre,1,11) .."_SCR.png")
+			LISTAS.SCREENSHOT_DIR = ("mass:/ART/".. get_substring(nombre,1,11) .."_SCR.png")
 		end
 		if CONTROL.ESTILO == 2 then
 			LISTAS.COVER_DIR2 = (actual .."/Multimedia/Covers/Covers PlayStation 2/".. nombre2 ..".png")
 			if doesFileExist(LISTAS.COVER_DIR2) == false then
-				LISTAS.COVER_DIR2 = ("mass:/ART/".. string.sub(nombre2,1,11) .."_COV.png")
+				LISTAS.COVER_DIR2 = ("mass:/ART/".. get_substring(nombre2,1,11) .."_COV.png")
 			end
 			LISTAS.COVER_DIR3 = (actual .."/Multimedia/Covers/Covers PlayStation 2/".. nombre3 ..".png")
 			if doesFileExist(LISTAS.COVER_DIR3) == false then
-				LISTAS.COVER_DIR3 = ("mass:/ART/".. string.sub(nombre3,1,11) .."_COV.png")
+				LISTAS.COVER_DIR3 = ("mass:/ART/".. get_substring(nombre3,1,11) .."_COV.png")
 			end
 		end
 	end
@@ -1066,7 +1073,7 @@ function buscar_VMC() -- Busca y guarda VMC/Modos de PS2
 	local VMC_encontradas = {}
 	if buscar_VMC_USB ~= nil then
 		for contador = 1,#buscar_VMC_USB do
-			if buscar_VMC_USB[contador].directory == false and string.lower(string.sub(buscar_VMC_USB[contador].name,-4)) == ".bin" then
+			if buscar_VMC_USB[contador].directory == false and string.lower(strting.sub(buscar_VMC_USB[contador].name,-4)) == ".bin" then
 				table.insert(VMC_encontradas,"mass:/VMC/".. buscar_VMC_USB[contador].name)
 			end
 		end
@@ -1144,34 +1151,34 @@ function menu_neutrino(nombre_iso) -- Menú de Configuración PS2
 					menus_valores[selector] = 0
 				end
 			elseif selector ~= 2 and selector == #menus_valores then
-				if doesFileExist(actual .."/Roms/ISOs Play Station 2/Configs/".. string.sub(nombre_iso,1,-5) ..".vmcd") then
-					System.removeFile(actual .."/Roms/ISOs Play Station 2/Configs/".. string.sub(nombre_iso,1,-5) ..".vmcd")
+				if doesFileExist(actual .."/Roms/ISOs Play Station 2/Configs/".. get_substring(nombre_iso,1,-5) ..".vmcd") then
+					System.removeFile(actual .."/Roms/ISOs Play Station 2/Configs/".. get_substring(nombre_iso,1,-5) ..".vmcd")
 				end
-				if doesFileExist(actual .."/Roms/ISOs Play Station 2/".. string.sub(nombre_iso,1,-5) ..".vmcd") then
-					System.removeFile(actual .."/Roms/ISOs Play Station 2/".. string.sub(nombre_iso,1,-5) ..".vmcd")
+				if doesFileExist(actual .."/Roms/ISOs Play Station 2/".. get_substring(nombre_iso,1,-5) ..".vmcd") then
+					System.removeFile(actual .."/Roms/ISOs Play Station 2/".. get_substring(nombre_iso,1,-5) ..".vmcd")
 				end
-				if doesFileExist("mass:/DVD/".. string.sub(nombre_iso,1,-5) ..".vmcd") then
-					System.removeFile("mass:/DVD/".. string.sub(nombre_iso,1,-5) ..".vmcd")
+				if doesFileExist("mass:/DVD/".. get_substring(nombre_iso,1,-5) ..".vmcd") then
+					System.removeFile("mass:/DVD/".. get_substring(nombre_iso,1,-5) ..".vmcd")
 				end
-				if doesFileExist("mass:/CD/".. string.sub(nombre_iso,1,-5) ..".vmcd") then
-					System.removeFile("mass:/CD/".. string.sub(nombre_iso,1,-5) ..".vmcd")
+				if doesFileExist("mass:/CD/".. get_substring(nombre_iso,1,-5) ..".vmcd") then
+					System.removeFile("mass:/CD/".. get_substring(nombre_iso,1,-5) ..".vmcd")
 				end
-				if doesFileExist(actual .."/Roms/ISOs Play Station 2/Configs/".. string.sub(nombre_iso,1,-5) ..".mode") then
-					System.removeFile(actual .."/Roms/ISOs Play Station 2/Configs/".. string.sub(nombre_iso,1,-5) ..".mode")
+				if doesFileExist(actual .."/Roms/ISOs Play Station 2/Configs/".. get_substring(nombre_iso,1,-5) ..".mode") then
+					System.removeFile(actual .."/Roms/ISOs Play Station 2/Configs/".. get_substring(nombre_iso,1,-5) ..".mode")
 				end
-				if doesFileExist(actual .."/Roms/ISOs Play Station 2/".. string.sub(nombre_iso,1,-5) ..".mode") then
-					System.removeFile(actual .."/Roms/ISOs Play Station 2/".. string.sub(nombre_iso,1,-5) ..".mode")
+				if doesFileExist(actual .."/Roms/ISOs Play Station 2/".. get_substring(nombre_iso,1,-5) ..".mode") then
+					System.removeFile(actual .."/Roms/ISOs Play Station 2/".. get_substring(nombre_iso,1,-5) ..".mode")
 				end
-				if doesFileExist("mass:/DVD/".. string.sub(nombre_iso,1,-5) ..".mode") then
-					System.removeFile("mass:/DVD/".. string.sub(nombre_iso,1,-5) ..".mode")
+				if doesFileExist("mass:/DVD/".. get_substring(nombre_iso,1,-5) ..".mode") then
+					System.removeFile("mass:/DVD/".. get_substring(nombre_iso,1,-5) ..".mode")
 				end
-				if doesFileExist("mass:/CD/".. string.sub(nombre_iso,1,-5) ..".mode") then
-					System.removeFile("mass:/CD/".. string.sub(nombre_iso,1,-5) ..".mode")
+				if doesFileExist("mass:/CD/".. get_substring(nombre_iso,1,-5) ..".mode") then
+					System.removeFile("mass:/CD/".. get_substring(nombre_iso,1,-5) ..".mode")
 				end
 				if menus_valores[1] == 1 then
 					local carga_de_VMC = "nada"
 					local dir = ("-mc0=".. VMC_encontradas[selector_VMC])
-					carga_de_VMC = System.openFile(actual .."/Roms/ISOs Play Station 2/Configs/".. string.sub(nombre_iso,1,-5) ..".vmcd",FCREATE)
+					carga_de_VMC = System.openFile(actual .."/Roms/ISOs Play Station 2/Configs/".. get_substring(nombre_iso,1,-5) ..".vmcd",FCREATE)
 					System.writeFile(carga_de_VMC,dir,string.len(dir))
 					System.closeFile(carga_de_VMC)
 				end
@@ -1199,7 +1206,7 @@ function menu_neutrino(nombre_iso) -- Menú de Configuración PS2
 					crear_modos = true
 				end
 				if crear_modos == true then
-					carga_de_modos = System.openFile(actual .."/Roms/ISOs Play Station 2/Configs/".. string.sub(nombre_iso,1,-5) ..".mode",FCREATE)
+					carga_de_modos = System.openFile(actual .."/Roms/ISOs Play Station 2/Configs/".. get_substring(nombre_iso,1,-5) ..".mode",FCREATE)
 					System.writeFile(carga_de_modos,modos_on,string.len(modos_on))
 					System.closeFile(carga_de_modos)
 				end
